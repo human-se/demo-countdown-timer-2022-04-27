@@ -1,20 +1,20 @@
-# Auction Countdown Timer Demo
+<p id="notice"><%= notice %></p>
 
-In this demo, I have added a simple JavaScript-based countdown timer to the "show" page for each auction in a simple auction-themed app that looks like this:
+<p>
+  <strong>Title:</strong>
+  <%= @auction.title %>
+</p>
 
-![Screenshot of a show-auction page that includes a countdown timer](screenshot.png)
+<p>
+  <strong>Description:</strong>
+  <%= @auction.description %>
+</p>
 
-To build the demo app, I started from a basic Rails scaffold for an `Auction` model class, like this:
+<p>
+  <strong>Deadline:</strong>
+  <%= @auction.deadline %>
+</p>
 
-```bash
-rails generate scaffold Auction title description deadline:datetime
-```
-
-To add the countdown timer, I adapted this JS countdown timer example: <https://www.w3schools.com/howto/howto_js_countdown.asp>
-
-In particular, check out the following timer code in `app/views/auctions/show.html.erb` (and note the embedded Ruby that retrieves the `deadline` attribute from the `Auction` object):
-
-```erb
 <p>
   <strong>Countdown:</strong>
 
@@ -53,13 +53,6 @@ In particular, check out the following timer code in `app/views/auctions/show.ht
   </script>
 
 </p>
-```
 
-It's fair to mention that this approach has some important shortcomings:
-
-- The countdown displayed in the browser may be out of sync with the deadline on the server side.
-- Changes to the deadline on the server side will not be reflected in the countdown timer without a page reload.
-
-Still, hopefully you will find this demo to be helpful to get started developing a countdown timer for your auction (or other) themed app.
-
-Cheers!
+<%= link_to 'Edit', edit_auction_path(@auction) %> |
+<%= link_to 'Back', auctions_path %>
